@@ -1,0 +1,89 @@
+/* Tailwind CSS 基础层 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 全局基础样式 ─────────────────────────────────────────────────────────── */
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #f5f5f7;
+  color: #1d1d1f;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body, #app {
+    background: #1c1c1e;
+    color: #f2f2f7;
+  }
+}
+
+/* ── 拖拽区域（标题栏） ──────────────────────────────────────────────────── */
+[data-tauri-drag-region] {
+  -webkit-app-region: drag;
+  user-select: none;
+  cursor: default;
+}
+
+/* 拖拽区域内的可点击元素必须关闭拖拽 */
+[data-tauri-drag-region] button,
+[data-tauri-drag-region] input,
+[data-tauri-drag-region] a {
+  -webkit-app-region: no-drag;
+}
+
+/* ── 自定义滚动条（macOS 风格） ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* ── 输入框全局重置 ──────────────────────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: #d1d1d6;
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0071e3;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+@media (prefers-color-scheme: dark) {
+  input[type="range"] {
+    background: #3a3a3c;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    background: #0a84ff;
+  }
+}
